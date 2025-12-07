@@ -1,21 +1,21 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'lobster', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'space Grotesk', 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #1e1e1f, #291b41);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content:baseline;
-    margin-top : 40px;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 0.5s ease;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1e1f, #291b41);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  margin-top: 40px;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 /* the flower effect
@@ -29,6 +29,7 @@ body {
   background: transparent;
   border: 0px solid black;
   cursor: pointer;
+
 }
 
 .wrapper {
@@ -39,6 +40,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .text {
@@ -49,6 +51,8 @@ body {
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.7);
   transition: all 0.5s ease;
+  font-family: 'Lobster', sans-serif;
+
 }
 
 .flower {
@@ -215,6 +219,7 @@ body {
     transform: rotate(390deg);
   }
 }
+
 /* the end of flower effect
 */
 
@@ -225,12 +230,20 @@ body {
   flex-direction: column;
   gap: 18px;
   padding: 35px;
-  background: rgba(17, 24, 39, 0.95);
+  background-color: #171717;
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transition: .4s ease-in-out;
 }
 
-/* Title */
+.form:hover {
+  margin-top: 20px;
+  transform: scale(1.05);
+  border: 1px black;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+}
+
 #heading {
   color: white;
   text-align: center;
@@ -238,7 +251,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* Input container */
+
 .field {
   display: flex;
   align-items: center;
@@ -247,7 +260,6 @@ body {
   padding: 12px;
 }
 
-/* Inputs */
 .input-field {
   background: transparent;
   border: none;
@@ -264,7 +276,7 @@ body {
 
 /* Button */
 .button1 {
-  background: #34d399;
+  background: #252525;
   border: none;
   border-radius: 10px;
   padding: 12px;
@@ -275,7 +287,8 @@ body {
 }
 
 .button1:hover {
-  background: #10b981;
+  background-color: black;
+  color: white;
 }
 
 /* Bottom text */
@@ -286,6 +299,16 @@ body {
 }
 
 .alt a {
-  color: #34d399;
-  text-decoration: none;
+  background: linear-gradient(#8b07d7, #93bdee);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  transition: .7s ease-in-out;
+}
+
+.alt a:hover{
+  font-size: large;
+  
 }

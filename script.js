@@ -8,6 +8,17 @@ function signup_call(event) {
     // waiting for the transition to complete
     setTimeout(() => {
         window.location.href = "signup.html";// switching to signup page
-    }, 500);
+    }, 800);
 
+}
+
+function forgot_call(event){
+    event.preventDefault();
+
+    document.body.classList.add('fade-out');
+
+    //waiting for transition
+     setTimeout(() => {
+        window.location.href = "forgot.html";// switching to forgot
+    }, 800);
 }
