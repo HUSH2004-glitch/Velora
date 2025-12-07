@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mood Based App</title>
+    <link rel="stylesheet" href="main.css">
+    <!-- <img src="\images\main page.jpg">  -->
+</head>
+<body>
+
+<!-- HEADER NAVBAR WITH DROPDOWN -->
+<header>
+    <nav class="navbar">
+
+        <!-- LEFT DROPDOWN -->
+        <div class="dropdown">
+            <button class="dropbtn">Menu ▾</button>
+            <div class="dropdown-content">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE MOOD BUTTONS -->
+        <ul class="mood-links">
+            <li><a href="#" class="mood-btn" data-mood="happy">Happy</a></li>
+            <li><a href="#" class="mood-btn" data-mood="sad">Sad</a></li>
+            <li><a href="#" class="mood-btn" data-mood="confused">Confused</a></li>
+            <li><a href="#" class="mood-btn" data-mood="focused">Focused</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<!-- MAIN 3-GRID LAYOUT -->
+<main class="three-grid">
+
+    <!-- LEFT SMALL TODO LIST -->
+    <div class="todo-small-box">
+        <h3>To-Do List</h3>
+
+        <input type="text" id="todo-input"
+               placeholder="Write tasks... press Enter to add"
+               style="width: 90%; padding: 10px; font-size: 16px; border-radius: 6px;">
+        <button onclick="addTask()">Add</button>
+
+        <ul id="todo-list"></ul>
+    </div>
+
+    <!-- MIDDLE DIARY BOX -->
+    <div class="diary-box">
+        <h3>Diary</h3>
+
+        <textarea id="diary-text" placeholder="Write your thoughts..."></textarea>
+
+        <button onclick="saveDiary()">Save Diary</button>
+        <button onclick="clearDiary()">Clear Diary</button>
+    </div>
+
+    <!-- RIGHT SAVED DIARY SECTION -->
+    <div class="saved-diary-box">
+        <h3>Saved Entries</h3>
+
+        <h4>Diary Entries</h4>
+        <ul id="saved-list"></ul>
+
+        <h4>Reflection Entries</h4>
+        <ul id="saved-reflection-list"></ul>
+    </div>
+
+</main>
+
+<!-- FOOTER – Editable Reflection Card -->
+<footer class="reflection-footer">
+
+
+    <h3>Daily Reflection</h3>
+
+    <textarea id="reflection-text" placeholder="Write your reflection here..."></textarea>
+    <button class="save-btn" onclick="saveReflection()">Save Reflection</button>
+<button class="clear-btn" onclick="clearReflection()">Clear Reflection</button>
+ 
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

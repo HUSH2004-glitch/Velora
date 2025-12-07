@@ -1,0 +1,264 @@
+/* NAVBAR */
+/* GENERAL */
+body {
+    margin: 0;
+    background: url("images/main page.jpg") no-repeat center center fixed; /* set background image */
+    background-size: cover; /* make it cover full screen */
+    font-family: "Poppins", Arial, sans-serif;
+    transition: background 0.4s ease;
+}
+
+.navbar {
+    background: #222;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+/* Mood Links on left */
+.mood-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+/* Dropdown on far right */
+.dropdown {
+    margin-left: auto; /* pushes dropdown to far right */
+    position: relative; /* required for dropdown-content absolute positioning */
+}
+
+.dropbtn {
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+.dropbtn:hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;  /* aligns dropdown content to right of button */
+    background: white;
+    min-width: 150px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    animation: fadeDrop 0.3s ease;
+}
+
+.dropdown-content a {
+    color: #222;
+    padding: 12px;
+    display: block;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.dropdown-content a:hover {
+    background: #f3f3f3;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@keyframes fadeDrop {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mood Buttons Styling */
+.mood-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: #444;
+    transition: 0.4s ease;
+}
+
+.mood-links a:hover {
+    background: #666;
+    transform: translateY(-2px);
+}
+
+
+
+/* --- MAIN THREE GRID --- */
+.three-grid {
+    display: grid;
+    grid-template-columns: 0.7fr 1.2fr 0.8fr;
+    gap: 20px;
+    padding: 25px;
+}
+
+/* BOX STYLING */
+.todo-small-box,
+.diary-box,
+.saved-diary-box {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    min-height: 500px;
+    box-shadow: 0px 2px 15px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.todo-small-box:hover,
+.diary-box:hover,
+.saved-diary-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.22);
+}
+
+/* HEADINGS */
+h3 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+/* TEXTAREAS */
+textarea {
+    width: 100%;
+    padding: 15px;
+    height: 220px;
+    resize: none;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    transition: 0.3s ease;
+    font-size: 15px;
+}
+
+textarea:focus {
+    border-color: #0077ff;
+    box-shadow: 0px 0px 8px rgba(0,123,255,0.6);
+    outline: none;
+}
+
+/* INPUT FIELDS */
+#todo-input {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+#todo-input:focus {
+    border-color: #007bff;
+}
+
+/* BUTTONS */
+button {
+    padding: 8px 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #0056c7;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* TO-DO CHECKBOX STYLE */
+#todo-list li {
+    list-style: none;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#todo-list li input {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* SAVED LISTS */
+#saved-diary-list li,
+#saved-reflection-list li {
+    background: #eef1f7;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+#saved-diary-list li:hover,
+#saved-reflection-list li:hover {
+    background: #d8def0;
+    transform: translateX(5px);
+}
+
+/* FOOTER REFLECTION CARD */
+.reflection-footer {
+    background: white;
+    margin: 25px;
+    padding: 20px;
+    border-top: 4px solid #222;
+    border-radius: 12px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.reflection-footer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.25);
+}
+
+#reflection-text {
+    height: 140px;
+}
+
+.save-btn, .clear-btn {
+    padding: 10px 15px;
+    margin: 10px 5px 0 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.save-btn {
+    background: #2ecc71;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #27ae60;
+    transform: scale(1.05);
+}
+
+.clear-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+.clear-btn:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+.todo-small-box {
+    width: 95%;
+    margin-left: 10px;
+}
