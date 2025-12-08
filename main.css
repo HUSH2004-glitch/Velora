@@ -1,207 +1,620 @@
-/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Space Grotesk', sans-serif;
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #2d1b3d 100%);
     min-height: 100vh;
-    background: linear-gradient(135deg, #1b1b1f, #2d1f34);
-    color: #fff;
+    color: #e0e0e0;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* HEADER NAVBAR */
-header {
-    width: 100%;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Background Image Layer */
+body::before {
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(30, 30, 35, 0.5);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    height: 100%;
+    background: url('images/main page.jpg') center/cover no-repeat;
+    opacity: 0.2;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Decorative Background Elements (inspired by honest-bullfrog) */
+body::after {
+    content: "";
+    background-color: rgba(138, 93, 168, 0.3);
+    position: absolute;
+    border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    top: 10%;
+    right: 10%;
+    z-index: 0;
+    filter: blur(80px);
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-30px) translateX(20px);
+    }
+}
+
+/* ============ HEADER & NAVBAR ============ */
+header {
+    position: relative;
     z-index: 1000;
 }
 
-/* Left dropdown */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background: rgba(20, 20, 30, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(138, 93, 168, 0.3);
+    position: relative;
+}
+
+.navbar::before {
+    content: "Velora";
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 50%, #e9d5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(196, 181, 253, 0.9));
+    }
+}
+
+/* ============ LEFT DROPDOWN MENU ============ */
 .dropdown {
     position: relative;
 }
 
 .dropbtn {
-    background: rgba(80, 60, 100, 0.5);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
+    background: rgba(138, 93, 168, 0.2);
+    color: #e0e0e0;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: 1px solid rgba(138, 93, 168, 0.4);
     border-radius: 12px;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .dropbtn:hover {
-    background: rgba(120, 90, 150, 0.7);
+    background: rgba(138, 93, 168, 0.4);
+    border-color: rgba(138, 93, 168, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(138, 93, 168, 0.4);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 45px;
-    left: 0;
-    background: rgba(40, 30, 50, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(30, 30, 40, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    min-width: 160px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     border-radius: 12px;
-    min-width: 150px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    border: 1px solid rgba(138, 93, 168, 0.3);
+    z-index: 1;
+    margin-top: 8px;
+    overflow: hidden;
+    animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .dropdown-content a {
-    display: block;
-    padding: 10px 15px;
-    color: #fff;
+    color: #e0e0e0;
+    padding: 1rem 1.25rem;
     text-decoration: none;
-    transition: 0.3s;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
 }
 
 .dropdown-content a:hover {
-    background: rgba(100, 60, 150, 0.4);
-    border-radius: 8px;
+    background: rgba(138, 93, 168, 0.3);
+    padding-left: 1.75rem;
+    color: #c4b5fd;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Right mood toggles */
+/* ============ MOOD TOGGLE BUTTONS (RIGHT SIDE) ============ */
 .mood-links {
     display: flex;
-    gap: 12px;
     list-style: none;
+    gap: 1rem;
+    margin-right: 8rem; /* Space for logo */
+}
+
+.mood-links li {
+    position: relative;
 }
 
 .mood-btn {
-    padding: 8px 16px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(80, 60, 100, 0.5);
-    color: #fff;
-    cursor: pointer;
+    display: block;
+    padding: 0.75rem 1.5rem;
+    background: rgba(30, 30, 40, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(138, 93, 168, 0.3);
+    border-radius: 25px;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.9rem;
     font-weight: 500;
-    transition: 0.3s;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mood-specific colors */
+.mood-btn[data-mood="happy"] {
+    border-color: rgba(251, 191, 36, 0.4);
+}
+
+.mood-btn[data-mood="happy"]:hover,
+.mood-btn[data-mood="happy"].active {
+    background: rgba(251, 191, 36, 0.3);
+    border-color: rgba(251, 191, 36, 0.7);
+    box-shadow: 0 5px 20px rgba(251, 191, 36, 0.4);
+}
+
+.mood-btn[data-mood="sad"] {
+    border-color: rgba(96, 165, 250, 0.4);
+}
+
+.mood-btn[data-mood="sad"]:hover,
+.mood-btn[data-mood="sad"].active {
+    background: rgba(96, 165, 250, 0.3);
+    border-color: rgba(96, 165, 250, 0.7);
+    box-shadow: 0 5px 20px rgba(96, 165, 250, 0.4);
+}
+
+.mood-btn[data-mood="confused"] {
+    border-color: rgba(244, 114, 182, 0.4);
+}
+
+.mood-btn[data-mood="confused"]:hover,
+.mood-btn[data-mood="confused"].active {
+    background: rgba(244, 114, 182, 0.3);
+    border-color: rgba(244, 114, 182, 0.7);
+    box-shadow: 0 5px 20px rgba(244, 114, 182, 0.4);
+}
+
+.mood-btn[data-mood="focused"] {
+    border-color: rgba(34, 197, 94, 0.4);
+}
+
+.mood-btn[data-mood="focused"]:hover,
+.mood-btn[data-mood="focused"].active {
+    background: rgba(34, 197, 94, 0.3);
+    border-color: rgba(34, 197, 94, 0.7);
+    box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
+}
+
+.mood-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.mood-btn:hover::before {
+    left: 100%;
 }
 
 .mood-btn:hover {
-    background: rgba(120, 90, 150, 0.7);
+    transform: scale(1.1) translateY(-3px);
 }
 
-/* Logo on top-right */
-header::after {
-    content: "VELOЯA";
-    position: absolute;
-    right: 40px;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #d1c1ff;
-}
-
-/* MAIN GRID */
+/* ============ MAIN THREE-GRID LAYOUT ============ */
 main.three-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr;
-    gap: 25px;
-    padding: 120px 40px 40px 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
-/* Glassy Card Base */
+/* ============ GLASSMORPHISM CARDS (Honest Bullfrog Style) ============ */
 .todo-small-box,
 .diary-box,
-.saved-diary-box,
-.reflection-footer {
-    background: rgba(50, 40, 60, 0.6);
-    backdrop-filter: blur(10px);
+.saved-diary-box {
+    position: relative;
+    color: white;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.074);
+    border: 1px solid rgba(255, 255, 255, 0.222);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all ease 0.3s;
+    animation: cardFadeIn 0.6s ease forwards;
+    opacity: 0;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Decorative elements for cards */
+.todo-small-box::before {
+    content: "";
+    background-color: rgba(251, 191, 36, 0.3);
+    position: absolute;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    top: 20%;
+    right: 5%;
+    z-index: -1;
+    filter: blur(30px);
+}
+
+.diary-box::before {
+    content: "";
+    background-color: rgba(138, 93, 168, 0.4);
+    position: absolute;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    top: 15%;
+    right: 8%;
+    z-index: -1;
+    filter: blur(40px);
+}
+
+.saved-diary-box::before {
+    content: "";
+    background-color: rgba(96, 165, 250, 0.3);
+    position: absolute;
+    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    top: 25%;
+    right: 6%;
+    z-index: -1;
+    filter: blur(35px);
+}
+
+@keyframes cardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-small-box {
+    animation-delay: 0.1s;
+    transform: translateY(30px);
+}
+
+.diary-box {
+    animation-delay: 0.2s;
+    transform: translateY(30px);
+}
+
+.saved-diary-box {
+    animation-delay: 0.3s;
+    transform: translateY(30px);
 }
 
 .todo-small-box:hover,
 .diary-box:hover,
-.saved-diary-box:hover,
-.reflection-footer:hover {
+.saved-diary-box:hover {
+    box-shadow: 0px 0px 30px 1px rgba(138, 93, 168, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.454);
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
 }
 
-/* Card Titles */
-.todo-small-box h3,
-.diary-box h3,
-.saved-diary-box h3,
-.reflection-footer h3 {
-    margin-bottom: 12px;
-    font-size: 20px;
-    color: #e0d8ff;
+/* ============ CARD HEADERS ============ */
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    color: #c4b5fd;
+    text-shadow: 0 0 15px rgba(196, 181, 253, 0.6);
 }
 
-/* Inputs & Textareas */
-input[type="text"], textarea {
+h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #a78bfa;
+    letter-spacing: 0.05em;
+}
+
+/* ============ INPUTS & TEXTAREAS ============ */
+input[type="text"],
+textarea {
     width: 100%;
-    padding: 10px;
+    padding: 0.875rem;
+    background: rgba(20, 20, 30, 0.6);
+    border: 1px solid rgba(138, 93, 168, 0.3);
     border-radius: 12px;
-    border: none;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: inherit;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: rgba(224, 224, 224, 0.5);
+}
+
+input[type="text"]:focus,
+textarea:focus {
     outline: none;
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 10px;
+    border-color: rgba(167, 139, 250, 0.6);
+    background: rgba(20, 20, 30, 0.8);
+    box-shadow: 0 0 20px rgba(138, 93, 168, 0.4);
 }
 
 textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#diary-text {
+    flex-grow: 1;
+}
+
+/* ============ BUTTONS ============ */
+button,
+.save-btn,
+.clear-btn {
+    background: rgba(138, 93, 168, 0.3);
+    color: #e0e0e0;
+    border: 1px solid rgba(138, 93, 168, 0.5);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 0.5rem 0.25rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+button::after,
+.save-btn::after,
+.clear-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::after,
+.save-btn:hover::after,
+.clear-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+button:hover,
+.save-btn:hover,
+.clear-btn:hover {
+    background: rgba(138, 93, 168, 0.5);
+    border-color: rgba(167, 139, 250, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(138, 93, 168, 0.5);
+}
+
+button:active,
+.save-btn:active,
+.clear-btn:active {
+    transform: translateY(0);
+}
+
+/* ============ LISTS ============ */
+ul {
+    list-style: none;
+    margin-top: 1rem;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+ul li {
+    background: rgba(20, 20, 30, 0.5);
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    border-left: 3px solid rgba(167, 139, 250, 0.7);
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+    animation: listItemSlide 0.3s ease;
+    font-size: 0.9rem;
+}
+
+@keyframes listItemSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+ul li:hover {
+    background: rgba(138, 93, 168, 0.3);
+    border-left-color: rgba(196, 181, 253, 1);
+    padding-left: 1rem;
+    transform: translateX(5px);
+}
+
+/* ============ FOOTER REFLECTION CARD ============ */
+.reflection-footer {
+    width: calc(100% - 6rem);
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.074);
+    border: 1px solid rgba(255, 255, 255, 0.222);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+    animation: cardFadeIn 0.6s ease 0.4s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reflection-footer::before {
+    content: "";
+    background-color: rgba(244, 114, 182, 0.3);
+    position: absolute;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    top: 20%;
+    right: 5%;
+    z-index: -1;
+    filter: blur(50px);
+}
+
+.reflection-footer:hover {
+    box-shadow: 0px 0px 30px 1px rgba(138, 93, 168, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.454);
+    transform: translateY(-5px);
+}
+
+.reflection-footer #reflection-text {
     min-height: 120px;
 }
 
-/* Buttons inside cards */
-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 500;
-    margin-right: 6px;
-    background: rgba(100, 70, 150, 0.5);
-    color: #fff;
-    transition: 0.3s;
+/* ============ RESPONSIVE DESIGN ============ */
+@media (max-width: 1200px) {
+    main.three-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .saved-diary-box {
+        grid-column: span 2;
+    }
 }
 
-button:hover {
-    background: rgba(140, 100, 180, 0.8);
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .navbar::before {
+        position: static;
+        transform: none;
+        margin-top: 1rem;
+    }
+    
+    .mood-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-right: 0;
+    }
+    
+    main.three-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+    
+    .saved-diary-box {
+        grid-column: span 1;
+    }
+    
+    .reflection-footer {
+        width: calc(100% - 3rem);
+    }
 }
 
-/* Footer */
-.reflection-footer {
-    margin-top: 40px;
-    padding: 25px;
-}
-
-/* Scrollable lists inside cards */
-#todo-list,
-#saved-list,
-#saved-reflection-list {
-    max-height: 200px;
-    overflow-y: auto;
-    margin-top: 10px;
-    padding-left: 15px;
-}
-
-#todo-list li,
-#saved-list li,
-#saved-reflection-list li {
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+@media (max-width: 480px) {
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    .mood-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    button,
+    .save-btn,
+    .clear-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
 }
