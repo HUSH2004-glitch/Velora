@@ -54,31 +54,32 @@ function setMood(moodKey) {
     const moodData = MOODS[moodKey] || MOODS.neutral;
     currentMood = moodData;
 
-    // 1. Update Colors (Keep this, it works)
+    // 1. Update Colors
     const root = document.documentElement; 
     root.style.setProperty('--accent-main-rgb', moodData.accent);
     root.style.setProperty('--accent-dark-rgb', moodData.dark);
 
-    // 2. THE NEW BACKGROUND FIX (Class Toggle)
-    // If the mood is 'angry', we add the class. Otherwise, we remove it.
-    if (moodKey === 'angry') {
-        document.body.classList.add('angry-mode');
-    } else {
-        document.body.classList.remove('angry-mode');
+    // 2. BACKGROUND FIX (Universal Class Toggle)
+    // First, remove ALL mood classes to reset the screen
+    document.body.classList.remove('angry-mode', 'happy-mode', 'sad-mode', 'confused-mode', 'focused-mode');
+
+    // Then, add ONLY the class for the current mood (if it's not neutral)
+    if (moodKey !== 'neutral') {
+        document.body.classList.add(`${moodKey}-mode`);
     }
 
-    // 3. Update Question (Keep this)
+    // 3. Update Question
     const questionEl = document.getElementById('mirror-question');
     if (questionEl) questionEl.innerText = moodData.question;
     
-    // 4. Update Button Active States (Keep this)
+    // 4. Update Button Active States
     document.querySelectorAll('.mood-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     const newActiveBtn = document.querySelector(`[data-mood="${moodKey}"]`);
     if (newActiveBtn) newActiveBtn.classList.add('active');
     
-    // 5. Update Reflection Placeholder (Keep this)
+    // 5. Update Reflection Placeholder
     const reflectionBox = document.getElementById("reflection-text");
     if (reflectionBox) {
          let message = "Write your reflection here...";

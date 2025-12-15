@@ -8,7 +8,7 @@
     --bg-url: url('images/main page.jpg'); 
 }
 
-/* 2. Update the background property here */
+/* In main.css */
 body::before {
     content: '';
     position: fixed;
@@ -17,13 +17,16 @@ body::before {
     width: 100%;
     height: 100%;
     
-    /* THE IMPORTANT PART: */
+    /* KEEP THIS PART (It handles the variable): */
     background-image: var(--bg-url);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     
-    opacity: 0.2;
+    /* --- THE FIX --- */
+    /* OLD: opacity: 0.2; (Too dark/faded) */
+    opacity: 2.0; /* NEW: Much brighter and clearer! */
+    
     z-index: -1;
     pointer-events: none;
     transition: background-image 0.5s ease;
@@ -92,24 +95,49 @@ header {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    /* CHANGE: Push everything (Menu + Moods) to the right */
+    justify-content: flex-end; 
     align-items: center;
     padding: 1.5rem 3rem;
     background: rgba(20, 20, 30, 0.5);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(138, 93, 168, 0.3);
-    position: relative;
+    border-bottom: 1px solid rgba(var(--accent-main-rgb), 0.3);
+    
+    /* Add a gap so the Menu button isn't stuck to the Mood buttons */
+    gap: 2rem; 
+    position: relative; /* Essential for the logo positioning */
+}
+/* --- VELORA LOGO --- */
+.navbar::before {
+    content: "Velora";
+    position: absolute;
+    right: 3rem; /* Positions it on the right side */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: 700;
+    
+    /* Gradient Text Color */
+    background: linear-gradient(135deg, 
+        rgb(var(--accent-dark-rgb)) 0%, 
+        rgb(var(--accent-main-rgb)) 50%, 
+        #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(var(--accent-dark-rgb), 0.5);
+    animation: logoGlow 3s ease-in-out infinite;
 }
 
-
-
+/* Logo Animation */
 @keyframes logoGlow {
     0%, 100% {
-        filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.6));
+        filter: drop-shadow(0 0 10px rgba(var(--accent-main-rgb), 0.6));
     }
     50% {
-        filter: drop-shadow(0 0 20px rgba(196, 181, 253, 0.9));
+        filter: drop-shadow(0 0 20px rgba(var(--accent-main-rgb), 0.9));
     }
 }
 
@@ -676,6 +704,44 @@ body::before {
 }
 
 /* THE NEW "ANGRY" OVERRIDE */
+/* --- MOOD BACKGROUND OVERRIDES --- */
+
+/* Happy Mode: Bright & Sunny */
+body.happy-mode::before {
+    background-image: url('images/smiley.jpg') !important;
+}
+
+/* Sad Mode: Rainy & Blue */
+body.sad-mode::before {
+    background-image: url('images/sad.jpg') !important;
+}
+
+/* Confused Mode: Swirly & Pink */
+body.confused-mode::before {
+    background-image: url('images/confused.jpg') !important;
+}
+
+/* Focused Mode: Green & Calm */
+body.focused-mode::before {
+    background-image: url('images/focused.jpg') !important;
+}
 body.angry-mode::before {
     background-image: url('images/angry.jpeg') !important;
+}
+/* --- FORCE CLEAR BACKGROUND --- */
+
+/* 1. Make the background image fully visible (no transparency) */
+body::before {
+    opacity: 1 !important; 
+    filter: none !important; /* Removes any blur filters */
+}
+
+/* 2. Hide the decorative "foggy" blob that sits on top */
+body::after {
+    display: none !important;
+}
+
+/* 3. Ensure the body background doesn't interfere */
+body {
+    background-color: #1a1a2e; /* Just a solid dark color behind the image */
 }
