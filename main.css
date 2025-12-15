@@ -1,138 +1,3 @@
-/* ==========================
-   UNIVERSAL BUTTON STYLE (Matches Mood Buttons)
-   ========================== */
-/* Make ADD button smaller in width but keep height & effects */
-/* Make input + button on same line */
-.todo-input-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Input takes full remaining width */
-.todo-input-row input {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-}
-
-/* Smaller Add button */
-.small-btn {
-    width: 90px;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    text-align: center;
-}
-
-
-button,
-.save-btn,
-.clear-btn,
-.btn-transition {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: rgba(27, 27, 28, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(163, 160, 164, 0.4);
-    color: #efeded;
-    border-radius: 25px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-
-    /* EXACT SAME ANIMATION AS MOOD BUTTONS */
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    overflow: hidden;
-}
-
-/* White shining effect moving across button */
-button::before,
-.save-btn::before,
-.clear-btn::before,
-.btn-transition::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.15),
-        transparent
-    );
-    transition: left 0.6s;
-}
-
-/* SAME hover sweep as mood buttons */
-button:hover::before,
-.save-btn:hover::before,
-.clear-btn:hover::before,
-.btn-transition:hover::before {
-    left: 100%;
-}
-
-/* SAME hover glow + scale */
-button:hover,
-.save-btn:hover,
-.clear-btn:hover,
-.btn-transition:hover {
-    transform: scale(1.1) translateY(-3px);
-    background: rgba(102, 100, 102, 0.434);
-    border-color: rgba(87, 90, 88, 0.7);
-    box-shadow: 0 5px 20px rgba(38, 152, 74, 0.4);
-}
-
-/* Active press */
-button:active,
-.save-btn:active,
-.clear-btn:active,
-.btn-transition:active {
-    transform: scale(1) translateY(0);
-}
-
-/* ==========================
-   UNIVERSAL BUTTON TRANSITIONS
-   ========================== */
-
-.btn-transition {
-    transition: 
-        background-color 0.3s ease-in-out,
-        color 0.3s ease-in-out,
-        transform 0.3s ease-in-out,
-        box-shadow 0.4s ease-in-out;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-transition:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 8px 20px rgba(23, 23, 23, 0.4);
-}
-
-.btn-transition::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(21, 21, 21, 0.25);
-    transform: translate(-50%,-50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.btn-transition:hover::after {
-    width: 350px;
-    height: 350px;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -140,6 +5,9 @@ button:active,
 }
 
 body {
+    /* Ensure the body transitions smoothly across color changes */
+    transition: background-color var(--transition-speed) ease;
+    /* ... existing styles ... */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0a0a0a 0%, #1d1d1e 50%, #181818 100%);
     min-height: 100vh;
@@ -194,39 +62,42 @@ header {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    /* CHANGE: Push everything (Menu + Moods) to the right */
+    justify-content: flex-end; 
     align-items: center;
     padding: 1.5rem 3rem;
     background: rgba(29, 29, 30, 0.5);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(83, 83, 83, 0.3);
+    border-bottom: 1px solid rgba(138, 93, 168, 0.3);
     position: relative;
 }
-
+/* --- VELORA LOGO --- */
 .navbar::before {
     content: "Velora";
     position: absolute;
-    right: 3rem;
+    right: 3rem; /* Positions it on the right side */
     top: 50%;
     transform: translateY(-50%);
     font-size: 2rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #101010 0%, #141314 50%, #1f1f1f 100%);
+    background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 50%, #e9d5ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    
     letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(47, 47, 48, 0.5);
+    text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
     animation: logoGlow 3s ease-in-out infinite;
 }
 
+/* Logo Animation */
 @keyframes logoGlow {
     0%, 100% {
-        filter: drop-shadow(0 0 10px rgba(235, 229, 229, 0.6));
+        filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.6));
     }
     50% {
-        filter: drop-shadow(0 0 20px rgba(241, 241, 242, 0.9));
+        filter: drop-shadow(0 0 20px rgba(196, 181, 253, 0.9));
     }
 }
 
@@ -236,11 +107,11 @@ header {
 }
 
 .dropbtn {
-    background: rgba(38, 37, 38, 0.2);
+    background: rgba(138, 93, 168, 0.2);
     color: #e0e0e0;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    border: 1px solid rgba(28, 27, 29, 0.4);
+    border: 1px solid rgba(138, 93, 168, 0.4);
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -376,6 +247,16 @@ header {
     border-color: rgba(34, 197, 94, 0.7);
     box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
 }
+.mood-btn[data-mood="angry"] {
+    border-color: rgba(220, 32, 17, 0.4); 
+}
+
+.mood-btn[data-mood="angry"]:hover,
+.mood-btn[data-mood="angry"].active {
+    background: rgba(220, 32, 17, 0.3);
+    border-color: rgba(220, 32, 17, 0.7);
+    box-shadow: 0 5px 20px rgba(220, 32, 17, 0.4); 
+}
 
 .mood-btn::before {
     content: '';
@@ -420,10 +301,12 @@ main.three-grid {
 }
 
 /* ============ GLASSMORPHISM CARDS (Honest Bullfrog Style) ============ */
-.todo-small-box,
-.diary-box,
-.saved-diary-box {
+.todo-small-box:hover,
+.diary-box:hover,
+.saved-diary-box:hover,
+.reflection-footer:hover {
     position: relative;
+    box-shadow: 0px 0px 30px 1px rgba(var(--accent-main-rgb), 0.5);
     color: white;
     padding: 1.5rem;
     background: rgba(152, 151, 151, 0.074);
@@ -515,8 +398,8 @@ h3 {
     font-weight: 600;
     letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
-    color: #abaaae;
-    text-shadow: 0 0 15px rgba(78, 77, 79, 0.6);
+    color: #c4b5fd;
+    text-shadow: 0 0 15px rgba(196, 181, 253, 0.6);
 }
 
 h4 {
@@ -524,7 +407,7 @@ h4 {
     font-weight: 500;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    color: #706f71;
+    color: #a78bfa;
     letter-spacing: 0.05em;
 }
 
@@ -534,9 +417,9 @@ textarea {
     width: 100%;
     padding: 0.875rem;
     background: rgba(20, 20, 30, 0.6);
-    border: 1px solid rgba(75, 74, 77, 0.3);
+    border: 1px solid rgba(138, 93, 168, 0.3);
     border-radius: 12px;
-    color: #e0e0e0;
+    color: #e0e0e0; /* Light text is easy to read */
     font-size: 0.95rem;
     margin: 0.5rem 0;
     transition: all 0.3s ease;
@@ -553,7 +436,7 @@ textarea::placeholder {
 input[type="text"]:focus,
 textarea:focus {
     outline: none;
-    border-color: rgba(124, 123, 126, 0.6);
+    border-color: rgba(167, 139, 250, 0.6);
     background: rgba(20, 20, 30, 0.8);
     box-shadow: 0 0 20px rgba(91, 90, 92, 0.4);
 }
@@ -571,9 +454,9 @@ textarea {
 button,
 .save-btn,
 .clear-btn {
-    background: rgba(92, 92, 93, 0.3);
+    background: rgba(138, 93, 168, 0.3);
     color: #e0e0e0;
-    border: 1px solid rgba(92, 91, 93, 0.5);
+    border: 1px solid rgba(138, 93, 168, 0.5);
     padding: 0.75rem 1.5rem;
     border-radius: 12px;
     cursor: pointer;
@@ -585,6 +468,17 @@ button,
     -webkit-backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+}
+
+button:hover,
+.save-btn:hover,
+.clear-btn:hover {
+    /* CHANGE: Stronger theme color on hover */
+    background: rgba(var(--accent-main-rgb), 0.5);
+    border-color: rgba(var(--accent-dark-rgb), 0.8);
+    
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(var(--accent-main-rgb), 0.5);
 }
 
 button::after,
@@ -641,7 +535,7 @@ ul li {
     padding: 0.75rem;
     margin: 0.5rem 0;
     border-radius: 10px;
-    border-left: 3px solid rgba(63, 63, 65, 0.7);
+    border-left: 3px solid rgba(167, 139, 250, 0.7);
     color: #e0e0e0;
     transition: all 0.3s ease;
     animation: listItemSlide 0.3s ease;
@@ -660,8 +554,8 @@ ul li {
 }
 
 ul li:hover {
-    background: rgba(44, 43, 44, 0.3);
-    border-left-color: rgb(50, 50, 50);
+    background: rgba(138, 93, 168, 0.3);
+    border-left-color: rgba(196, 181, 253, 1);
     padding-left: 1rem;
     transform: translateX(5px);
 }
@@ -767,4 +661,53 @@ ul li:hover {
         padding: 0.6rem 1.2rem;
         font-size: 0.85rem;
     }
+}
+/* DEFAULT BACKGROUND (Use your main page image name here) */
+body::before {
+    /* If you renamed it main-page.jpg, put that here. */
+    /* If it's still "main page.jpg", put that. */
+    background-image: url('images/main page.jpg'); 
+}
+
+/* THE NEW "ANGRY" OVERRIDE */
+/* --- MOOD BACKGROUND OVERRIDES --- */
+
+/* Happy Mode: Bright & Sunny */
+body.happy-mode::before {
+    background-image: url('images/smiley.jpg') !important;
+}
+
+/* Sad Mode: Rainy & Blue */
+body.sad-mode::before {
+    background-image: url('images/sad.jpg') !important;
+}
+
+/* Confused Mode: Swirly & Pink */
+body.confused-mode::before {
+    background-image: url('images/confused.jpg') !important;
+}
+
+/* Focused Mode: Green & Calm */
+body.focused-mode::before {
+    background-image: url('images/focused.jpg') !important;
+}
+body.angry-mode::before {
+    background-image: url('images/angry.jpeg') !important;
+}
+/* --- FORCE CLEAR BACKGROUND --- */
+
+/* 1. Make the background image fully visible (no transparency) */
+body::before {
+    opacity: 1 !important; 
+    filter: none !important; /* Removes any blur filters */
+}
+
+/* 2. Hide the decorative "foggy" blob that sits on top */
+body::after {
+    display: none !important;
+}
+
+/* 3. Ensure the body background doesn't interfere */
+body {
+    background-color: #1a1a2e; /* Just a solid dark color behind the image */
 }

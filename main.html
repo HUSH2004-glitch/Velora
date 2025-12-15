@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
 <!-- HEADER NAVBAR WITH DROPDOWN -->
 <header>
     <nav class="navbar">
@@ -19,12 +18,12 @@
             </div>
         </div>
 
-        <!-- RIGHT MOOD BUTTONS -->
+        <!-- RIGHT SIDE MOOD BUTTONS -->
         <ul class="mood-links">
-            <li><a href="#" class="mood-btn btn-transition" data-mood="happy">Happy</a></li>
-            <li><a href="#" class="mood-btn btn-transition" data-mood="sad">Sad</a></li>
-            <li><a href="#" class="mood-btn btn-transition" data-mood="confused">Confused</a></li>
-            <li><a href="#" class="mood-btn btn-transition" data-mood="focused">Focused</a></li>
+            <li><a href="#" class="mood-btn" data-mood="happy">Happy</a></li>
+            <li><a href="#" class="mood-btn" data-mood="sad">Sad</a></li>
+            <li><a href="#" class="mood-btn" data-mood="confused">Confused</a></li>
+            <li><a href="#" class="mood-btn" data-mood="focused">Focused</a></li>
         </ul>
 
     </nav>
@@ -43,10 +42,12 @@
         <ul id="todo-list"></ul>
     </div>
     <!-- MIDDLE DIARY BOX -->
-    <div class="diary-box">
-        <h3>Think and Write</h3>
+<div class="diary-box">
+    <h3>Think and Write</h3>
 
-        <textarea id="diary-text" placeholder="Write your thoughts..."></textarea>
+    <p id="mirror-question" class="fade-text">How do you feel about your goals today?</p>
+
+    <textarea id="diary-text" placeholder="Write your thoughts..."></textarea>
 
         <button class="btn-transition" onclick="saveDiary()">Save Diary</button>
         <button class="btn-transition" onclick="clearDiary()">Clear Diary</button>
@@ -77,6 +78,7 @@
 
 </footer>
 
-<script src="main.js"></script>
+<script src="main.js">
+</script>
 </body>
 </html>
