@@ -3,7 +3,6 @@
 <head>
     <title>Mood Based App</title>
     <link rel="stylesheet" href="main.css">
-    <!-- <img src="\images\main page.jpg">  -->
 </head>
 <body>
 
@@ -13,24 +12,23 @@
 
         <!-- LEFT DROPDOWN -->
         <div class="dropdown">
-            <button class="dropbtn">Menu ▾</button>
+            <button class="dropbtn navbar-button btn-transition">Menu ▾</button>
             <div class="dropdown-content">
                 <a href="#">Home</a>
                 <a href="#">About</a>
             </div>
         </div>
 
-        <!-- RIGHT SIDE MOOD BUTTONS -->
+        <!-- RIGHT MOOD BUTTONS -->
         <ul class="mood-links">
-            <li><a href="#" class="mood-btn" data-mood="happy">Happy</a></li>
-            <li><a href="#" class="mood-btn" data-mood="sad">Sad</a></li>
-            <li><a href="#" class="mood-btn" data-mood="confused">Confused</a></li>
-            <li><a href="#" class="mood-btn" data-mood="focused">Focused</a></li>
+            <li><a href="#" class="mood-btn btn-transition" data-mood="happy">Happy</a></li>
+            <li><a href="#" class="mood-btn btn-transition" data-mood="sad">Sad</a></li>
+            <li><a href="#" class="mood-btn btn-transition" data-mood="confused">Confused</a></li>
+            <li><a href="#" class="mood-btn btn-transition" data-mood="focused">Focused</a></li>
         </ul>
 
     </nav>
 </header>
-
 
 <main class="three-grid">
 
@@ -38,22 +36,20 @@
     <div class="todo-small-box">
         <h3>To-Do List</h3>
 
-        <input type="text" id="todo-input"
-               placeholder="Write tasks... press Enter to add"
-               style="width: 90%; padding: 10px; font-size: 16px; border-radius: 6px;">
-        <button onclick="addTask()">Add</button>
-
+     <div class="todo-input-row">
+    <input type="text" id="todo-input" placeholder="Write tasks... press Enter to add">
+    <button class="small-btn" onclick="addTask()"><p style="font-size: large;">+</p></button>
+</div>
         <ul id="todo-list"></ul>
     </div>
-
     <!-- MIDDLE DIARY BOX -->
     <div class="diary-box">
         <h3>Think and Write</h3>
 
         <textarea id="diary-text" placeholder="Write your thoughts..."></textarea>
 
-        <button onclick="saveDiary()">Save Diary</button>
-        <button onclick="clearDiary()">Clear Diary</button>
+        <button class="btn-transition" onclick="saveDiary()">Save Diary</button>
+        <button class="btn-transition" onclick="clearDiary()">Clear Diary</button>
     </div>
 
     <!-- RIGHT SAVED DIARY SECTION -->
@@ -69,16 +65,16 @@
 
 </main>
 
-<!-- FOOTER – Editable Reflection Card -->
+<!-- FOOTER (REFLECTION BOX) -->
 <footer class="reflection-footer">
-
 
     <h3>Daily Reflection</h3>
 
     <textarea id="reflection-text" placeholder="Write your reflection here..."></textarea>
-    <button class="save-btn" onclick="saveReflection()">Save Reflection</button>
-<button class="clear-btn" onclick="clearReflection()">Clear Reflection</button>
- 
+    
+    <button class="save-btn btn-transition" onclick="saveReflection()">Save Reflection</button>
+    <button class="clear-btn btn-transition" onclick="clearReflection()">Clear Reflection</button>
+
 </footer>
 
 <script src="main.js"></script>
