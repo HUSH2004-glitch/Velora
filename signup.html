@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
 
-    <script src="script.js"></script>
+    <script src="auth.js"></script>
     <link rel="stylesheet" href="signup.css">
 
     <title>velora</title>
@@ -65,28 +65,31 @@
         </div>
     </div>
 
-    <form class="form">
+    <form class="form" id="signup_form">
 
         <p id="heading">Create Account</p>
 
+        <p id="error_msg" class="error"></p>
+
+
         <div class="field">
-            <input type="text" class="input-field" placeholder="Full Name" required>
+            <input type="text" id="full_name" class="input-field" placeholder="Full Name" required>
         </div>
 
         <div class="field">
-            <input type="email" class="input-field" placeholder="Email" required>
+            <input type="email" id="email" class="input-field" placeholder="Email" required>
         </div>
 
         <div class="field">
-            <input type="password" class="input-field" placeholder="Password" required>
+            <input type="password" id="password" class="input-field" placeholder="Password" required>
         </div>
 
         <div class="field">
-            <input type="number" class="input-field" placeholder="Age" required>
+            <input type="number" id="age" class="input-field" placeholder="Age" required>
         </div>
 
         <div class="field">
-            <input type="email" class="input-field" placeholder="Backup Email (for recovery)" required>
+            <input type="email" id="backup_email" class="input-field" placeholder="Backup Email (for recovery)" required>
         </div>
 
         <button class="button1" type="submit">Sign Up</button>
