@@ -222,7 +222,9 @@ body.fade-out {
     transform: rotate(390deg);
   }
 }
-/*the floral animation code ends*/
+
+
+/* flowers animations ends here  */
 
 /* Background Image Layer */
 body::before {
@@ -232,14 +234,15 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('images/velora.jpg') center/cover no-repeat;
+    background-color: rgb(45, 6, 45);
+    /* background: url('images/velora.jpg') center/cover no-repeat; */
     opacity: 0.2;
     z-index: -1;
     pointer-events: none;
 }
 
 /* Decorative Background Elements (inspired by honest-bullfrog) */
-body::after {
+/* body::after {
     content: "";
     background-color: rgba(14, 14, 14, 0.3);
     position: absolute;
@@ -251,7 +254,7 @@ body::after {
     z-index: 0;
     filter: blur(80px);
     animation: float 8s ease-in-out infinite;
-}
+} */
 
 @keyframes float {
     0%, 100% {
@@ -267,10 +270,11 @@ header {
     position: relative;
     z-index: 1000;
 }
-
+ 
+/* CHANGE: Push everything (Menu + Moods) to the right */
+/* navbar and buttons code */
 .navbar {
     display: flex;
-    /* CHANGE: Push everything (Menu + Moods) to the right */
     justify-content: flex-end; 
     align-items: center;
     padding: 1.5rem 3rem;
@@ -309,17 +313,21 @@ header {
     }
 }
 
+
+
+
 /* ============ LEFT DROPDOWN MENU ============ */
+/* home and about in dropdown */
 .dropdown {
     position: relative;
 }
 
 .dropbtn {
-    background: rgba(138, 93, 168, 0.2);
+    background: rgba(6, 4, 7, 0.2);
     color: #e0e0e0;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    border: 1px solid rgba(138, 93, 168, 0.4);
+    border: 1px solid rgba(22, 14, 27, 0.4);
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -330,22 +338,22 @@ header {
 }
 
 .dropbtn:hover {
-    background: rgba(50, 49, 50, 0.4);
-    border-color: rgba(69, 67, 70, 0.7);
+    background: rgba(24, 3, 24, 0.4);
+    border-color: rgba(36, 35, 36, 0.7);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(40, 39, 40, 0.4);
+    box-shadow: 0 5px 20px rgba(28, 28, 28, 0.4);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background: rgba(30, 30, 40, 0.95);
+    background: rgba(19, 19, 21, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     min-width: 160px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(15, 15, 15, 0.4);
     border-radius: 12px;
-    border: 1px solid rgba(24, 23, 25, 0.3);
+    border: 1px solid rgba(22, 21, 22, 0.3);
     z-index: 1;
     margin-top: 8px;
     overflow: hidden;
@@ -362,9 +370,9 @@ header {
         transform: translateY(0);
     }
 }
-
+/* dropdown content background and colour */
 .dropdown-content a {
-    color: #e0e0e0;
+    color: #e2dfdf;
     padding: 1rem 1.25rem;
     text-decoration: none;
     display: block;
@@ -381,6 +389,9 @@ header {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+
+
 
 /* ============ MOOD TOGGLE BUTTONS (RIGHT SIDE) ============ */
 .mood-links {
@@ -508,68 +519,98 @@ main.three-grid {
     z-index: 1;
 }
 
-/* ============ GLASSMORPHISM CARDS (Honest Bullfrog Style) ============ */
+
+/* ===============================
+   BASE CARD STYLES (FULL DARK)
+================================ */
+.todo-small-box,
+.diary-box,
+.saved-diary-box,
+.reflection-footer {
+    position: relative;
+    background: #070707; /* Deep dark black */
+    color: #eaeaea;
+
+    border-radius: 22px;
+    padding: 1.5rem;
+    min-height: 400px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.7),
+        inset 0 0 0 rgba(0, 0, 0, 0);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border 0.35s ease,
+        background 0.35s ease;
+
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFadeIn 0.6s ease forwards;
+}
+
+/* ===============================
+   HOVER EFFECT (LIFT + GLOW)
+================================ */
 .todo-small-box:hover,
 .diary-box:hover,
 .saved-diary-box:hover,
 .reflection-footer:hover {
-    position: relative;
-    box-shadow: 0px 0px 30px 1px rgba(var(--accent-main-rgb), 0.5);
-    color: white;
-    padding: 1.5rem;
-    background: rgba(152, 151, 151, 0.074);
-    border: 1px solid rgba(45, 44, 44, 0.009);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    transition: all ease 0.3s;
-    animation: cardFadeIn 0.6s ease forwards;
-    opacity: 0;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
+    transform: translateY(-6px);
+
+    background: #0d0d0e; /* Slightly lighter on hover */
+
+    border: 1px solid rgba(250, 249, 249, 0.5);
+    animation-duration: 0.1s;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.9),
+        0 0 25px rgba(var(--accent-main-rgb), 0.35);
 }
 
-/* Decorative elements for cards */
-.todo-small-box::before {
+/* ===============================
+   DECORATIVE GLOW ORBS (SUBTLE)
+================================ */
+.todo-small-box::before,
+.diary-box::before,
+.saved-diary-box::before,
+.reflection-footer::before {
     content: "";
-    background-color: rgba(21, 17, 7, 0.3);
     position: absolute;
+    width: 4.5rem;
+    height: 4.5rem;
+    top: 18%;
+    right: 6%;
     border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
-    top: 20%;
-    right: 5%;
+    filter: blur(40px);
     z-index: -1;
-    filter: blur(30px);
+    opacity: 0.6;
+}
+
+.todo-small-box::before {
+    background: rgba(12, 12, 12, 0.25);
 }
 
 .diary-box::before {
-    content: "";
-    background-color: rgba(112, 109, 109, 0.4);
-    position: absolute;
-    border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    top: 15%;
-    right: 8%;
-    z-index: -1;
-    filter: blur(40px);
+    background: rgba(6, 6, 6, 0.25);
 }
 
 .saved-diary-box::before {
-    content: "";
-    background-color: rgba(147, 150, 150, 0.3);
-    position: absolute;
-    border-radius: 50%;
-    width: 4.5rem;
-    height: 4.5rem;
-    top: 25%;
-    right: 6%;
-    z-index: -1;
-    filter: blur(35px);
+    background: rgba(5, 5, 5, 0.25);
 }
 
+.reflection-footer::before {
+    background: rgba(8, 8, 8, 0.25);
+}
+
+/* ===============================
+   ANIMATION
+================================ */
 @keyframes cardFadeIn {
     to {
         opacity: 1;
@@ -577,28 +618,13 @@ main.three-grid {
     }
 }
 
-.todo-small-box {
-    animation-delay: 0.1s;
-    transform: translateY(30px);
-}
-
-.diary-box {
-    animation-delay: 0.2s;
-    transform: translateY(30px);
-}
-
-.saved-diary-box {
-    animation-delay: 0.3s;
-    transform: translateY(30px);
-}
-
-.todo-small-box:hover,
-.diary-box:hover,
-.saved-diary-box:hover {
-    box-shadow: 0px 0px 30px 1px rgba(51, 50, 51, 0.5);
-    border: 1px solid rgba(50, 49, 49, 0.454);
-    transform: translateY(-5px);
-}
+/* ===============================
+   STAGGERED ENTRANCE
+================================ */
+.todo-small-box { animation-delay: 0.1s; }
+.diary-box     { animation-delay: 0.2s; }
+.saved-diary-box { animation-delay: 0.3s; }
+.reflection-footer { animation-delay: 0.4s; }
 
 /* ============ CARD HEADERS ============ */
 h3 {
@@ -620,43 +646,56 @@ h4 {
 }
 
 /* ============ INPUTS & TEXTAREAS ============ */
+/* ===============================
+   SIGN-IN STYLE INPUTS (MAIN PAGE)
+================================ */
+
 input[type="text"],
 textarea {
     width: 100%;
-    padding: 0.875rem;
-    background: rgba(20, 20, 30, 0.6);
-    border: 1px solid rgba(138, 93, 168, 0.3);
-    border-radius: 12px;
-    color: #e0e0e0; /* Light text is easy to read */
+    padding: 0.85rem 1rem;
+
+    background-color: #171717; /* SAME as sign-in */
+    color: #d3d3d3;
+
+    border: none;
+    outline: none;
+    border-radius: 25px;
+
     font-size: 0.95rem;
-    margin: 0.5rem 0;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     font-family: inherit;
+
+    /* Inset shadow like sign-in */
+    box-shadow:
+        inset 2px 5px 10px rgb(5, 5, 5),
+        inset -2px -2px 8px rgba(255, 255, 255, 0.03);
+
+    transition: all 0.3s ease;
 }
 
-input[type="text"]::placeholder,
+/* Placeholder style */
+input::placeholder,
 textarea::placeholder {
-    color: rgba(224, 224, 224, 0.5);
+    color: #8a8a8a;
+    font-style: italic;
 }
 
+/* Focus effect (soft glow) */
 input[type="text"]:focus,
 textarea:focus {
-    outline: none;
-    border-color: rgba(167, 139, 250, 0.6);
-    background: rgba(20, 20, 30, 0.8);
-    box-shadow: 0 0 20px rgba(91, 90, 92, 0.4);
+    box-shadow:
+        inset 2px 5px 10px rgb(5, 5, 5),
+        0 0 12px rgba(176, 106, 223, 0.4);
+
+    background-color: #171717;
 }
 
+/* Diary textarea height */
 textarea {
     min-height: 150px;
     resize: vertical;
 }
 
-#diary-text {
-    flex-grow: 1;
-}
 
 /* ============ BUTTONS ============ */
 button,
@@ -774,7 +813,7 @@ ul li:hover {
     max-width: 1400px;
     margin: 2rem auto;
     padding: 2rem;
-    background: rgba(123, 122, 122, 0.074);
+    background: rgba(18, 18, 18, 0.074);
     border: 1px solid rgba(255, 255, 255, 0.222);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -788,7 +827,7 @@ ul li:hover {
 
 .reflection-footer::before {
     content: "";
-    background-color: rgba(53, 48, 51, 0.3);
+    background-color: rgba(10, 9, 10, 0.3);
     position: absolute;
     border-radius: 50%;
     width: 6rem;
@@ -800,7 +839,7 @@ ul li:hover {
 }
 
 .reflection-footer:hover {
-    box-shadow: 0px 0px 30px 1px rgba(71, 68, 74, 0.5);
+    box-shadow: 0px 0px 30px 1px rgba(6, 6, 6, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.454);
     transform: translateY(-5px);
 }
@@ -874,7 +913,8 @@ ul li:hover {
 body::before {
     /* If you renamed it main-page.jpg, put that here. */
     /* If it's still "main page.jpg", put that. */
-    background-image: url('images/main page.jpg'); 
+    /* background-image: url('images/main page.jpg');  */
+   background: linear-gradient(135deg, #1e1e1f, #291b41);
 }
 
 /* THE NEW "ANGRY" OVERRIDE */
